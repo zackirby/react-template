@@ -17,8 +17,6 @@ var browserSync = require('browser-sync');
 var historyApiFallback = require('connect-history-api-fallback')
 
 var reload = browserSync.reload; //need this
-
-
 /*
   Styles Task
 */
@@ -26,7 +24,7 @@ var reload = browserSync.reload; //need this
 gulp.task('styles',function() {
 
   //compile sass
-  gulp.src('sass/style.scss')  //need this
+  gulp.src('app/sass/style.scss')  //need this
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('./build/css/'))
         .pipe(reload({stream:true})) //this will cause auto page reload on change
@@ -37,7 +35,7 @@ gulp.task('styles',function() {
   Images
 */
 gulp.task('images',function(){
-  gulp.src('sass/images/**')
+  gulp.src('app/sass/images/**')
     .pipe(gulp.dest('./build/css/images'))
 });
 
@@ -64,7 +62,7 @@ function handleErrors() {
 
 function buildScript(file, watch) {
   var props = {
-    entries: ['./scripts/' + file],
+    entries: ['./app/scripts/' + file],
     debug : true,
     cache: {},
     packageCache: {},
@@ -105,6 +103,6 @@ gulp.task('scripts', function() {
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['images','styles','scripts','browser-sync'], function() {
   gulp.watch("*.html").on("change", reload);  //need this
-  gulp.watch('sass/**/*',['styles']); //Need this
+  gulp.watch('app/sass/**/*',['styles']); //Need this
   return buildScript('main.js', true); // browserify watch for JS changes
 });
