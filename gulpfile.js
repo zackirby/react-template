@@ -14,7 +14,6 @@ var rename = require('gulp-rename');
 var buffer = require('vinyl-buffer');
 
 var browserSync = require('browser-sync');
-var historyApiFallback = require('connect-history-api-fallback')
 
 var reload = browserSync.reload; //need this
 /*
@@ -44,9 +43,8 @@ gulp.task('images',function(){
 */
 gulp.task('browser-sync', function() {
     browserSync({
-        // we need to disable clicks and forms for when we test multiple rooms
         server : {},
-        middleware : [ historyApiFallback() ],
+        cors: true,
         ghostMode: false
     });
 });

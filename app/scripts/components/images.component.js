@@ -1,44 +1,38 @@
 import React from 'react';
-import $ from 'jquery';
 
 export default class images extends React.Component {
 
-	static propTypes = {
-		images: React.PropTypes.array
-	};
-
-	static defaultProps = {
-		images: []
+	constructor(props) {
+		super(props);
+		this.state = {
+			images: [],
+			imgCount: 0
+		}
+		this.updateJson = this.updateJson.bind(this);
 	}
 
 	componentDidMount() {
-		var jqxhr = $.getJSON( "http://www.apartmenttherapy.com/admin/galleries/sample.json", {
-			crossDomain: true
-		}, function() {
-		  console.log( "success" );
-		})
-		  .done(function() {
-		    console.log( "second success" );
-		  })
-		  .fail(function() {
-		    console.log( "error" );
-		  })
-		  .always(function() {
-		    console.log( "complete" );
-		  });
+		this.updateJson();
 	}
 
-
+	componentDidUpdate(prevProps, prevState) {
+		console.log(this.state.images, this.state.imgCount);
+	}
+	updateJson(){
+		fetch("http://www.apartmenttherapy.com/admin/galleries/sample.json")
+        .then( (response) => {
+            return response.json() })   
+                .then( (json) => {
+                    this.setState({images: json, imgCount: json.length});
+            }
+        );
+	}
 	render() {
+		let imgList = this.state.images.map ( (image, index) => {
+			return <img key={index} src={"http://atmedia.imgix.net/" + image} alt="some text" />
+		});
 		return (
-			<div>
-			{//this.state.images.map = ((image, index) => {
-				//return (
-				//	<img src={"http://atmedia.imgix.net/" + image[index]}/>
-				//	)
-				//})
-			}
-			</div>
-		 );
+			<div className="imgList">{imgList}</div>
+		)
 	}
 }
