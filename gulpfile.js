@@ -38,6 +38,14 @@ gulp.task('images',function(){
 });
 
 /*
+  Fonts
+*/
+gulp.task('fonts',function(){
+  gulp.src('app/fonts/**')
+    .pipe(gulp.dest('./build/fonts'))
+});
+
+/*
   Browser Sync
 */
 gulp.task('browser-sync', function() {
@@ -98,7 +106,7 @@ gulp.task('scripts', function() {
 });
 
 // run 'scripts' task first, then watch for future changes
-gulp.task('default', ['images','styles','scripts','browser-sync'], function() {
+gulp.task('default', ['images','styles','fonts','scripts','browser-sync'], function() {
   gulp.watch("*.html").on("change", reload);  //need this
   gulp.watch('app/sass/**/*',['styles']); //Need this
   return buildScript('main.js', true); // browserify watch for JS changes

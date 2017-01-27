@@ -4,7 +4,12 @@
 	.fa-stack {
 		text-decoration: none;
 		color: #ccc;
-
+		margin-top: 1em;
+		display: inline-block;
+		
+		+ .fa-stack {
+			margin-left: 2em;
+		}
 		&.like:hover, &.like.active {
 			color: #090;
 		}

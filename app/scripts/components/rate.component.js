@@ -15,16 +15,18 @@ export default class Like extends React.Component {
     }
   };
 
-	likeClick() {
+	likeClick(e) {
 		this.setState({
 			like: !this.state.like
 		});
+    e.preventDefault();
 	}
 
-	dislikeClick() {
+	dislikeClick(e) {
 		this.setState({
 			dislike: !this.state.dislike 
 		});
+    e.preventDefault();
 	}
 
   render() {
@@ -32,7 +34,7 @@ export default class Like extends React.Component {
   	let dislikeClasses = cx("fa-stack fa-lg dislike", {active: this.state.dislike});
     return (
       <div className="rating">
-      	<a href="#" className={likeClasses} ref="liked" onClick={this.likeClick}>
+      	<a href="#" className={likeClasses} ref="liked" onClick={this.likeClick, this.props.rateClick}>
       		<i className="fa fa-circle fa-stack-2x"></i>
       		<i className="fa fa-thumbs-up fa-inverse fa-stack-1x"></i>
       		<span>Like</span>
