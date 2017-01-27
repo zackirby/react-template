@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Images from './components/images.component';
+import Like from './components/like.component';
 
 export default class Main extends React.Component {
   static propTypes = {
@@ -9,11 +10,17 @@ export default class Main extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      imgCount: 5
+    }
   }
 
   render() {
     return (
-      <div><Images /></div>
+      <div className="container">
+        <Images/>
+        <Like/>
+      </div>
     );
   }
 }

@@ -1,0 +1,14 @@
+.imgList {
+	position: relative;
+	height: 300px;
+
+	img {
+		height: 0;
+		width: 0;
+
+		&:first-of-type {
+			height: auto;
+			width: auto;
+		}
+	}
+}

@@ -1,5 +1,5 @@
 {
-  "name": "funds-transfer",
+  "name": "atm-fe-test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,6 +18,7 @@
     "babelify": "6.4.0",
     "browser-sync": "^2.16.1",
     "browserify": "11.2.0",
+    "classnames": "^2.2.5",
     "connect-history-api-fallback": "1.1.0",
     "firebase": "2.3.1",
     "gulp": "3.9.0",

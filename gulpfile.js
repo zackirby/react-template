@@ -9,7 +9,6 @@ var notify = require('gulp-notify');
 
 var stylus = require('gulp-stylus');
 var autoprefixer = require('gulp-autoprefixer');
-var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var buffer = require('vinyl-buffer');
 

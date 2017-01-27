@@ -1,0 +1,25 @@
+.rating {
+	text-align: center;
+
+	.fa-stack {
+		text-decoration: none;
+		color: #ccc;
+
+		&.like:hover, &.like.active {
+			color: #090;
+		}
+
+		&.dislike:hover, &.dislike.active {
+			color: #f00;
+		}
+
+		span {
+			position:absolute;
+			left:-10000px;
+			top:auto;
+			width:1px;
+			height:1px;
+			overflow:hidden;
+		}
+	}
+}
